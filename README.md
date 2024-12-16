@@ -1,0 +1,1 @@
+It is for study and research purposes only. If you cannot accept the above terms, please stop using this source code immediately and delete the related files.

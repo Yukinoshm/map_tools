@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <title>《三角洲行动》地图工具</title>
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta name="robots" content="all" />
+  <meta name="author" content="Tencent" />
+  <meta id="share-name" itemprop="name" content="" />
+  <meta id="share-image" itemprop="image" content="" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta itemprop="image" content="logo.jpg" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="css/L.Control.Zoomslider.css" crossorigin="" />
+  <script src="js/lib/leaflet.js"></script>
+  <script src="js/lib/L.Control.Zoomslider.js"></script>
+
+  <script type="text/javascript">
+    "use strict";
+    !(function (d, e) {
+      var n = "orientationchange" in window ? "orientationchange" : "resize",
+        t = (function e() {
+          var n,
+            t = d.documentElement,
+            i = t.clientWidth;
+          if (i)
+            return (
+              (n = 1720 < i ? (100 * i) / 1920 : 172e3 / 1920),
+              (t.style.fontSize = n + "px"),
+              e
+            );
+        })();
+      t(),
+        setTimeout(function () {
+          t();
+        }, 300),
+        e.addEventListener("load", t, !1),
+        e.addEventListener(n, t, !1),
+        d.addEventListener && d.addEventListener("DOMContentLoaded", t, !1);
+    })(document, window);
+  </script>
+  <link href="css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="content">
+    <!-- full -->
+    <div class="m-main-wrap full">
+      <!-- 竖屏页 -->
+      <!-- absf -->
+      <div class="m-vertical absf">
+        <!-- abcter -->
+        <div class="m-wrap sizcover absf">
+          <div class="m-index absf">
+            <div id="MapContainer">
+              <div class="map-mask img_map_mask absf sizcover"></div>
+            </div>
+
+            <div class="nav-ctn img_nav_bg">
+              <div class="nav-title img_nav_title"></div>
+
+              <!-- 搜索 -->
+              <div class="map-select">
+                <input type="text" class="select-iput" placeholder="搜索" />
+                <div class="select-ctn"></div>
+                <div class="btn-close-select">X</div>
+              </div>
+              <!-- 切换地图 -->
+              <div class="curr-map-ctn">
+                <div class="curr-map-name">
+                  零号大坝 <span class="map-lv"> ( 普通 )</span>
+                </div>
+                <div class="btn-change-map-ctn">
+                  <div class="btn-change-map img_change_map"></div>
+                  <!-- 烽火地带 -->
+                  <div class="map-list-ctn">
+                    <div class="map-list">
+                      <div class="map-item map-item-0" data-index="0">
+                        零号大坝
+                      </div>
+                      <div class="map-item map-item-1" data-index="1">
+                        长弓溪谷
+                      </div>
+                      <div class="map-item map-item-2" data-index="2">
+                        航天基地
+                      </div>
+                      <div class="map-item map-item-3" data-index="3">
+                        巴克什
+                      </div>
+                    </div>
+                    <div class="map-lv-list">
+                      <div class="map-lv-item map-lv-item-0" data-lv="0">
+                        普通
+                      </div>
+                      <div class="map-lv-item map-lv-item-1" data-lv="1">
+                        机密
+                      </div>
+                      <div class="map-lv-item map-lv-item-2" data-lv="2">
+                        绝密
+                      </div>
+                      <div class="btn-random close"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="btn-war-change">
+                <div class="map-change-text img_map_type_fhdd"></div>
+                <div class="war-change-text img_map_type_qmzc">
+                  <p style="text-align: center; height: 30px;margin-top: 20px;">敬请期待</p>
+                </div>
+              </div>
+
+              <div class="choose-all">
+                <div class="btn-choose-all-icon img_all_close"></div>
+                全选
+              </div>
+              <!-- 选项标签 -->
+              <div class="nav-option-ctn">
+                <div class="nav-options"></div>
+                <div class="nav-type-list"></div>
+                <div class="reset-choose img_reset"></div>
+              </div>
+
+              <div class="btn-nav-state">
+                <div class="nav-state-icon img_nav_nav_state"></div>
+              </div>
+              <div class="select-region-ctn">
+                <div class="btn-select-region img_nav_check"></div>
+                <div class="check-line img_nav_check_line"></div>
+                <div class="check-title">快速定位</div>
+                <div class="region-list"></div>
+              </div>
+            </div>
+
+            <div class="right-nav">
+              <div class="right-nav-bg img_right_nav_bg"></div>
+              <div class="btn-log"></div>
+            </div>
+
+            <!-- 弹窗 -->
+            <div class="log-pop">
+              <div class="log-pop-bg"></div>
+              <div class="abcter log-pop-ctn-bg img_log_pop">
+                <div class="log-title">更新日志</div>
+                <div class="log-pop-title">*温馨提示：坐标持续更新中，目前地图工具内坐标信息为聚变赛季版本。</div>
+                <div class="abcter log-pop-ctn">
+                  <div class="log-item">
+                    <div class="log-time">11月21日</div>
+                    <div class="log-fgx img_pop_fgx"></div>
+                    <div class="log-text">
+                      <ul>
+                        <li>地图工具坐标已更新至聚变赛季版本；</li>
+                        <li>烽火地带模式已更新巴克什地图坐标（含巴别塔区域坐标）；</li>
+                        <li>全面战场模式地图正式上线，已更新攀升、临界点、贯穿、烬区、堑壕战的据点、基地部署点、载具、载具补给站、固定弹药箱、固定武器、装置坐标，并支持切换攻防模式和占领模式、PC端和移动端的地图。</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="log-item">
+                    <div class="log-time">9月26日</div>
+                    <div class="log-fgx img_pop_fgx"></div>
+                    <div class="log-text">《三角洲行动》地图工具正式版上线，已更新零号大坝（普通）、零号大坝（机密）、长弓溪谷（普通）、长弓溪谷（机密）、航天基地（机密）、航天基地（绝密）、巴克什（普通）、巴克什（机密）的物资点、出生点、撤离点及首领坐标。</div>
+                  </div>
+
+                  <div class="log-item">
+                    <div class="log-time">8月15日</div>
+                    <div class="log-fgx img_pop_fgx"></div>
+                    <div class="log-text">《三角洲行动》地图工具beta版正式上线，已更新零号大坝（普通）、零号大坝（机密）、长弓溪谷（普通）、长弓溪谷（机密）、航天基地（绝密）的物资点、出生点、撤离点及首领坐标。</div>
+                  </div>
+                </div>
+                <div class="abcter btn-close-pop img_btn_close"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/lib/jquery-1.11.3.min.js"></script>
+  <script src="js/lib/map.js"></script>
+  <script src="js/lib/main.js"></script>
+  <script src="js/eas/eas.js"></script>
+  <script src="js/main.a4d10b03.js"></script>
+</body>
+
+</html>
